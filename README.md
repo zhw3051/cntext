@@ -11,7 +11,7 @@
 功能模块含
 
 - **stats**  文本统计,可读性等
-- **dictionary ** 构建词表(典)
+- **dictionary** 构建词表(典)
 - **sentiment**  情感分析
 - **similarity**   文本相似度
 - **visualization** 可视化，如词云图
