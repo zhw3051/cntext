@@ -2,8 +2,8 @@
 
 中文文本分析库，可对文本进行词频统计、词典扩充、情绪分析、相似度、可读性等
 
-- [github地址](https://github.com/hidadeng/cnsenti) ``https://github.com/hidadeng/cntext``
-- [pypi地址](https://pypi.org/project/cnsenti/)  ``https://pypi.org/project/cntext/``
+- [github地址](https://github.com/hidadeng/cntext) ``https://github.com/hidadeng/cntext``
+- [pypi地址](https://pypi.org/project/cntext/)  ``https://pypi.org/project/cntext/``
 - [视频课-**Python网络爬虫与文本数据分析**](https://ke.qq.com/course/482241?tuin=163164df)
 
 
