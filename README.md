@@ -526,7 +526,7 @@ wordcloud(text=text1,
 
 Run
 
-[**点击查看词云图效果**](output/词云图测试.html)
+[**点击查看词云图效果**](examples/output/词云图测试.html)
 
 ![](img/wordcloud.png)
 
