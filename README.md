@@ -285,7 +285,7 @@ Run
 
 <br><br>
 
-## 3.3 senti_by_diy(text)
+### 3.3 senti_by_diy(text)
 
 使用diy词典进行情感分析，计算各个情绪词出现次数，未考虑强度副词、否定词对情感的复杂影响，
 
