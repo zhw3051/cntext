@@ -10,13 +10,14 @@
 
 功能模块含
 
+- **cntext** 
 - **stats**  文本统计,可读性等
 - **dictionary** 构建词表(典)
 - **sentiment**  情感分析
 - **similarity**   文本相似度
 - **visualization** 可视化，如词云图
 
-[toc]
+
 
 <br>
 
@@ -30,7 +31,134 @@ pip install cntext==0.9
 
 <br>
 
-## 一、stats
+## 一、cntext
+
+查看cntext基本信息
+
+```python
+import cntext
+
+help(cntext)
+```
+
+Run
+
+```
+Help on package cntext:
+
+NAME
+    cntext
+
+PACKAGE CONTENTS
+    description (package)
+    dictionary (package)
+    sentiment (package)
+    similarity (package)
+    visualization (package)
+
+DATA
+    ADV_words = ['都', '全', '单', '共', '光', '尽', '净', '仅', '就', '只', '一共', '...
+    CONJ_words = ['乃', '乍', '与', '无', '且', '丕', '为', '共', '其', '况', '厥', '...
+    DUTIR_Ais = {'sigh', '一命呜呼', '一场春梦', '一场空', '一头跌在菜刀上－切肤之痛', '一念之差', .....
+    DUTIR_Haos = {'1兒巴经', '3x', '8错', 'BUCUO', 'Cool毙', 'NB', ...}
+    DUTIR_Jings = {'848', 'FT', '_god', 'yun', '一个骰子掷七点－出乎意料', '一举成名', ......
+    DUTIR_Jus = {'一则以喜，一则以惧', '一发千钧', '一年被蛇咬，三年怕草索', '一座皆惊', '一脸横肉', '一蛇两头...
+    DUTIR_Les = {':)', 'CC', 'Happy', 'LOL', '_so', 'haha', ...}
+    DUTIR_Nus = {'2气斗狠', 'MD', 'TNND', 'gun', 'kao', '一刀两断', ...}
+    DUTIR_Wus = {'B4', 'BD', 'BS', 'HC', 'HJ', 'JJWW', ...}
+    HOWNET_deny = {'不', '不可', '不是', '不能', '不要', '休', ...}
+    HOWNET_extreme = {'万', '万万', '万分', '万般', '不亦乐乎', '不可开交', ...}
+    HOWNET_ish = {'一些', '一点', '一点儿', '不丁点儿', '不大', '不怎么', ...}
+    HOWNET_more = {'多', '大不了', '如斯', '尤甚', '强', '愈', ...}
+    HOWNET_neg = {'一下子爆发', '一下子爆发的一连串', '一不小心', '一个屁', '一仍旧贯', '一偏', ...}
+    HOWNET_pos = {'', '一专多能', '一丝不差', '一丝不苟', '一个心眼儿', '一五一十', ...}
+    HOWNET_very = {'不为过', '不少', '不胜', '不过', '何啻', '何止', ...}
+    STOPWORDS_en = {'a', 'about', 'above', 'across', 'after', 'afterwards'...
+    STOPWORDS_zh = {'、', '。', '〈', '〉', '《', '》', ...}
+
+FILE
+    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/cntext/__init__.py
+```
+
+<br>
+
+```python
+from cntext import dict_info
+
+dict_info()
+```
+
+Run
+
+```
+ 【大连理工大学情感本体库】
+     七大情绪分类，依次是哀、恶、好、惊、惧、乐、怒；对应的情绪词表依次：
+    DUTIR_Ais = {"泣血捶膺", "望断白云", "日暮途穷", "身微力薄"...}
+    DUTIR_Wus = {"饰非遂过", "恶语", "毁害", "恶籍盈指", "脾气爆躁", "淫贱", "凌乱"...}
+    DUTIR_Haos =  {"打破砂锅璺到底", "多彩", "披沙拣金", "见机行事", "精神饱满"...}
+    DUTIR_Jings = {"骇人视听", "拍案惊奇", "悬念", "无翼而飞", "原来", "冷门"...}
+    DUTIR_Jus ={"山摇地动", "月黑风高", "流血", "老鼠偷猫饭－心惊肉跳", "一发千钧"...}
+    DUTIR_Les ={"含哺鼓腹", "欢呼鼓舞", "莺歌蝶舞", "将伯之助", "逸兴横飞", "舒畅"...}
+    DUTIR_Nus = {"怨气满腹", "面有愠色", "愤愤", "直眉瞪眼", "负气斗狠", "挑眼"...}
+    
+    【知网Hownet词典】
+    含正负形容词、否定词、副词等词表，对应的词表依次:
+    HOWNET_deny = {"不", "不是", "不能", "不可"...}
+    HOWNET_extreme = {"百分之百", "倍加", "备至", "不得了"...}
+    HOWNET_ish = {"点点滴滴", "多多少少", "怪", "好生", "还", "或多或少"...}
+    HOWNET_more = {"大不了", "多", "更", "比较", "更加", "更进一步", "更为", "还", "还要"...}
+    HOWNET_neg = {"压坏", "鲁莽的", "被控犯罪", "银根紧", "警惕的", "残缺", "致污物", "柔弱"...}
+    HOWNET_pos = {"无误", "感激不尽", "受大众欢迎", "敬礼",  "文雅", "一尘不染", "高精度", "兴盛"...}
+    HOWNET_very = {"不为过", "超", "超额", "超外差", "超微结构", "超物质", "出头"...}
+    
+    【停用词表】
+    中英文停用词表，依次
+    STOPWORDS_zh = {"经", "得", "则甚", "跟", "好", "具体地说"...}
+    STOPWORDS_en = {'a', 'about', 'above', 'across', 'after'...}
+    
+    【中文副词/连词】
+    副词ADV、连词CONJ
+    ADV_words = ['都', '全', '单', '共', '光'...}
+    CONJ_words = ['乃', '乍', '与', '无', '且'...}
+```
+
+<br>
+
+查看词表
+
+```python
+from cntext import CONJ_words, ADV_words
+
+#获取连词词表
+CONJ_words
+```
+
+Run
+
+```
+['乃',
+ '乍',
+ '与',
+ '无',
+ '且',
+ '丕',
+ '为',
+ '共',
+ '其',
+ '况',
+ '厥',
+ '则',
+ '那',
+ '兼',
+ ...
+ ]
+```
+
+
+
+<br><br>
+
+## 二、stats
 
 目前含
 
@@ -88,12 +216,14 @@ readability(text)
 
 <br><br>
 
-## 二、dictionary
+## 三、dictionary
 
 本模块用于构建词表(典),含
 
 - SoPmi 共现法扩充词表(典)
 - W2VModels 词向量word2vec扩充词表(典)
+
+### 3.1 SoPmi 共现法
 
 ```python
 from cntext.dictionary import SoPmi
@@ -125,6 +255,8 @@ finished! cost 61.8965539932251
 
 
 <br>
+
+### 3.2 W2VModels 词向量
 
 ```python
 from cntext.dictionary import W2VModels
@@ -186,7 +318,7 @@ Word2Vec模型训练开始......
 
 
 
-## 三、 sentiment
+## 四、 sentiment
 
 - senti_by_hownet 使用知网Hownet词典对文本进行**情感**分析
 - senti_by_dutir  使用大连理工大学情感本体库dutir对文本进行**情绪**分析
@@ -194,7 +326,7 @@ Word2Vec模型训练开始......
 
 
 
-### 3.1 senti_by_hownet(text, adj_adv=False)
+### 4.1 senti_by_hownet(text, adj_adv=False)
 
 使用知网Hownet词典进行(中)文本数据的情感分析，统计正、负情感信息出现次数(得分)
 
@@ -246,7 +378,7 @@ Run
 
 <br><br>
 
-### 3.2 senti_by_dutir(text)
+### 4.2 senti_by_dutir(text)
 
 使用大连理工大学情感本体库对文本进行情绪分析，统计各情绪词语出现次数。
 
@@ -285,7 +417,7 @@ Run
 
 <br><br>
 
-### 3.3 senti_by_diy(text)
+### 4.3 senti_by_diy(text)
 
 使用diy词典进行情感分析，计算各个情绪词出现次数，未考虑强度副词、否定词对情感的复杂影响，
 
@@ -321,7 +453,7 @@ Run
 
 
 
-### 3.4 注意
+### 4.4 注意
 
 **返回结果**:  **num**表示词语出现次数； score是考虑副词、否定词对情感的修饰，结果不是词频，是情感类别的得分。
 
@@ -329,7 +461,7 @@ Run
 
 
 
-## 四、similarity
+## 五、similarity
 
 使用cosine、jaccard、miniedit等计算两文本的相似度，算法实现参考自
 
@@ -359,14 +491,14 @@ Run
 
 
 
-## 五、visualization
+## 六、visualization
 
 文本信息可视化，含wordcloud、wordshiftor
 
 - wordcloud 词云图
 - wordshiftor 两文本词移图
 
-### 5.1 wordcloud(text, title, html_path)
+### 6.1 wordcloud(text, title, html_path)
 
 -  text:  中文文本字符串数据
 - title:  词云图标题
@@ -402,7 +534,7 @@ Run
 
 
 
-### 5.2 wordshiftor(text1, text2, title, top_n, matplotlib_family)
+### 6.2 wordshiftor(text1, text2, title, top_n, matplotlib_family)
 
 - text1:  文本数据1；字符串
 - text2:  文本数据2；字符串
@@ -479,3 +611,4 @@ Run
 
 
 ![](img/dadeng.png)
+
